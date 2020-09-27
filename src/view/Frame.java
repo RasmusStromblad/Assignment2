@@ -44,6 +44,7 @@ public class Frame extends JFrame {
 	private JButton btn_assignment3;
 	private JButton btn_assignment2;
 	private DefaultTableModel tableModel_contentAssignment2;
+	private JLabel lbl_assignment1Response;
 
 	public Frame() {
 		frame = new JFrame();
@@ -97,6 +98,10 @@ public class Frame extends JFrame {
 		btn_assignment3 = new JButton("Go to assignment 3");
 		btn_assignment3.setBounds(10, 11, 164, 23);
 		panel_contentAssignment1.add(btn_assignment3);
+		
+		lbl_assignment1Response = new JLabel("");
+		lbl_assignment1Response.setBounds(10, 449, 800, 14);
+		panel_contentAssignment1.add(lbl_assignment1Response);
 
 		panel_contentAssignment2 = new JPanel();
 		getContentPane().add(panel_contentAssignment2, "name_968404147739400");
@@ -369,5 +374,15 @@ public class Frame extends JFrame {
 	public void setTableModel_contentAssignment2(DefaultTableModel tableModel_contentAssignment2) {
 		this.tableModel_contentAssignment2 = tableModel_contentAssignment2;
 	}
+
+	public JLabel getLbl_assignment1Response() {
+		return lbl_assignment1Response;
+	}
+
+	public void setLbl_assignment1Response(JLabel lbl_assignment1Response) {
+		this.lbl_assignment1Response = lbl_assignment1Response;
+	}
+	
+	
 
 }

@@ -1,5 +1,6 @@
 package backend;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,15 +9,20 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import view.Frame;
 
 public class Controller {
 
+	// Declare variables
+
 	private DataAccessLayer dataAccessLayer;
 	private Frame frame;
 	private ErrorHandler errorHandler;
+
+	// Get and set methods
 
 	public DataAccessLayer getDataAccessLayer() {
 		return dataAccessLayer;
@@ -42,6 +48,7 @@ public class Controller {
 		this.errorHandler = errorHandler;
 	}
 
+	// Constructor for Controller class
 	public Controller(DataAccessLayer dataAccessLayer, Frame frame, ErrorHandler errorHandler) {
 		this.frame = frame;
 		this.dataAccessLayer = dataAccessLayer;
@@ -50,43 +57,49 @@ public class Controller {
 		declareEvents();
 	}
 
+	// Gather all application interaction
 	public void declareEvents() {
-		
+
 		// Go from assignment 2 to 3
 		frame.getBtn_assignment3().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Get source of the action listener from paremeter e and close it
+				// Get source of the action listener from parameter e and close it
 				Container window = ((JButton) e.getSource()).getParent();
 				window.setVisible(false);
-				
+
 				frame.getPanel_contentAssignment2().setVisible(true);
 			}
 		});
-		
+
 		// Go from assignment 3 to 2
-				frame.getBtn_assignment2().addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						// Get source of the action listener from paremeter e and close it
-						Container window = ((JButton) e.getSource()).getParent();
-						window.setVisible(false);
-						
-						frame.getPanel_contentAssignment1().setVisible(true);
-					}
-				});
-				
-		
-		
-		
+		frame.getBtn_assignment2().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Get source of the action listener from parameter e and close it
+				Container window = ((JButton) e.getSource()).getParent();
+				window.setVisible(false);
+
+				frame.getPanel_contentAssignment1().setVisible(true);
+			}
+		});
+
 		// 1
 		frame.getBtn_getKeys().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getAllKeys();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -96,11 +109,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getTableConstraints();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -110,11 +131,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getAllTablesInDatabse();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -124,11 +153,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getAllTablesInDatabse2();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -138,11 +175,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getColumnsOfEmployeeTable();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -152,11 +197,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getColumnsOfEmployeeTable2();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -166,11 +219,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getMetaData();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -180,11 +241,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getTableWithMostRows();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_content(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -196,11 +265,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getNOKToSEK();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -210,11 +287,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getMostExpensiveValue();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -224,11 +309,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getFotografernaLocation();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -238,11 +331,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getSickEmployees();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -252,11 +353,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getFamilyrelation();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -266,11 +375,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getABerglundsCustomers();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -280,11 +397,19 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet keysResultSet;
 				try {
+					// Create a result set containing return value from the dataAccessLayer function
 					keysResultSet = dataAccessLayer.getAccountsForCustomer();
+					// Update the table to contain the data from the result set
 					updateTableModel(frame.getTableModel_contentAssignment2(), keysResultSet);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (SQLException sqlException) {
+					// Tell the user if something goes wrong
+					String errorMessage = errorHandler.getError(sqlException);
+					if (sqlException.getErrorCode() == 0) {
+						JOptionPane.showMessageDialog(null, errorMessage);
+					} else {
+						frame.getLbl_assignment1Response().setForeground(Color.red);
+						frame.getLbl_assignment1Response().setText(errorMessage);
+					}
 				}
 			}
 		});
@@ -322,9 +447,7 @@ public class Controller {
 				tableModel.addRow(rowData);
 			}
 		} catch (SQLException sqlException) {
-			// TODO Auto-generated catch block
-			// String errorMessage = errorHandler.getError(sqlException);
-			// FIXA
+
 		}
 	}
 
