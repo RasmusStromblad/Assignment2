@@ -11,7 +11,11 @@ public class DataAccessLayer {
 	// Set url to database
 	String url = "jdbc:sqlserver://localhost:1433;database=CRONOS";
 
-	// Asignment 2
+	// Assignment 2
+
+	// Functions to execute querys in the database. All functions calls either
+	// executeQuery or executeUpdate depending on return value. This is done to
+	// prevent code repeating
 
 	// 1 -
 	public ResultSet getAllKeys() throws SQLException {
@@ -69,7 +73,7 @@ public class DataAccessLayer {
 		return executeQuery(query);
 	}
 
-	// Asignment 3
+	// Assignment 3
 
 	// 1 -
 	public ResultSet getNOKToSEK() throws SQLException {
@@ -125,7 +129,8 @@ public class DataAccessLayer {
 				+ "ON b.No_ = a.[Customer No_]\r\n" + "WHERE [Customer No_] = '10000'";
 		return executeQuery(query);
 	}
-
+	
+	// Global function to execute querys inserted as parameter
 	public ResultSet executeQuery(String queryToExecute) throws SQLException {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 

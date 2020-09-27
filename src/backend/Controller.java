@@ -415,7 +415,8 @@ public class Controller {
 		});
 
 	}
-
+	
+	// Global function to update a specific table model with a specific result set. This takes in both as parameters
 	public void updateTableModel(DefaultTableModel tableModel, ResultSet rs) {
 		// Reset the table inserted
 		tableModel.setRowCount(0);
