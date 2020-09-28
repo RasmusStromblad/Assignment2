@@ -73,63 +73,6 @@ public class DataAccessLayer {
 		return executeQuery(query);
 	}
 
-	// Assignment 3
-
-	// 1 -
-	public ResultSet getNOKToSEK() throws SQLException {
-		String query = "SELECT [Relational Exch_ Rate Amount]\r\n"
-				+ "FROM [CRONUS Sverige AB$Currency Exchange Rate]\r\n" + "WHERE [Currency Code] = 'NOK'";
-		return executeQuery(query);
-	}
-
-	// 2 -
-	public ResultSet getMostExpensiveValue() throws SQLException {
-		String query = "SELECT [Currency Code], [Relational Exch_ Rate Amount]\r\n"
-				+ "FROM [CRONUS Sverige AB$Currency Exchange Rate]\r\n" + "WHERE [Relational Exch_ Rate Amount] = (\r\n"
-				+ "	SELECT MAX([Relational Exch_ Rate Amount]) \r\n"
-				+ "	FROM [CRONUS Sverige AB$Currency Exchange Rate])";
-		return executeQuery(query);
-	}
-
-	// 3
-	public ResultSet getFotografernaLocation() throws SQLException {
-		String query = "SELECT Name, Address, City\r\n" + "FROM [CRONUS Sverige AB$Ship-to Address]\r\n"
-				+ "WHERE Name LIKE '%Fotograferna%'";
-		return executeQuery(query);
-	}
-
-	// 4
-	public ResultSet getSickEmployees() throws SQLException {
-		String query = "SELECT DISTINCT (b.[No_]), b.[First Name], b.[Last Name]\r\n"
-				+ "FROM [CRONUS Sverige AB$Employee Absence] a, [CRONUS Sverige AB$Employee] b\r\n"
-				+ "WHERE [Cause of Absence Code] = 'SJUK'";
-		return executeQuery(query);
-	}
-
-	// 5
-	public ResultSet getFamilyrelation() throws SQLException {
-		String query = "SELECT a.[First Name], a.[Last Name], b.[Relative Code], b.[First Name] AS 'Relative First Name', b.[Last Name] AS 'Relative Last Name'\r\n"
-				+ "FROM [CRONUS Sverige AB$Employee] a\r\n" + "JOIN [CRONUS Sverige AB$Employee Relative] b\r\n"
-				+ "On a.No_ = b.[Employee No_]";
-		return executeQuery(query);
-	}
-
-	// 6
-	public ResultSet getABerglundsCustomers() throws SQLException {
-		String query = "SELECT a.Name\r\n" + "FROM [CRONUS Sverige AB$Customer] a\r\n"
-				+ "JOIN [CRONUS Sverige AB$Employee] b\r\n" + "ON a.[Salesperson Code] = b.No_\r\n"
-				+ "WHERE b.[First Name] = 'Andreas' AND b.[Last Name] = 'Berglund'";
-		return executeQuery(query);
-	}
-
-	// 7
-	public ResultSet getAccountsForCustomer() throws SQLException {
-		String query = "SELECT b.[No_], b.Name, a.[Bank Account No_]\r\n"
-				+ "FROM [CRONUS Sverige AB$Customer Bank Account] a\r\n" + "JOIN [CRONUS Sverige AB$Customer] b\r\n"
-				+ "ON b.No_ = a.[Customer No_]\r\n" + "WHERE [Customer No_] = '10000'";
-		return executeQuery(query);
-	}
-	
 	// Global function to execute querys inserted as parameter
 	public ResultSet executeQuery(String queryToExecute) throws SQLException {
 		DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
