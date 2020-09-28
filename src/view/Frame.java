@@ -68,19 +68,19 @@ public class Frame extends JFrame {
 		panel_contentAssignment1.add(btn_getAllTables2);
 
 		btn_getColumnsFromEmployee = new JButton("Get columns from employee");
-		btn_getColumnsFromEmployee.setBounds(435, 471, 177, 23);
+		btn_getColumnsFromEmployee.setBounds(435, 471, 217, 23);
 		panel_contentAssignment1.add(btn_getColumnsFromEmployee);
 
 		btn_getColumnsFromEmploee2 = new JButton("Get columns from employee 2");
-		btn_getColumnsFromEmploee2.setBounds(435, 505, 177, 23);
+		btn_getColumnsFromEmploee2.setBounds(435, 505, 217, 23);
 		panel_contentAssignment1.add(btn_getColumnsFromEmploee2);
 
 		btn_getMetadata = new JButton("Get metadata");
-		btn_getMetadata.setBounds(662, 471, 132, 23);
+		btn_getMetadata.setBounds(696, 471, 132, 23);
 		panel_contentAssignment1.add(btn_getMetadata);
 
 		btn_getLargestTable = new JButton("Get largest table");
-		btn_getLargestTable.setBounds(662, 505, 132, 23);
+		btn_getLargestTable.setBounds(696, 505, 132, 23);
 		panel_contentAssignment1.add(btn_getLargestTable);
 
 		lbl_assignment1Response = new JLabel("");
