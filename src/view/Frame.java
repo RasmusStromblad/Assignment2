@@ -31,18 +31,6 @@ public class Frame extends JFrame {
 	private JButton btn_getColumnsFromEmploee2;
 	private JButton btn_getMetadata;
 	private JButton btn_getLargestTable;
-	private JPanel panel_contentAssignment2;
-	private JTable table_contentAssignment2;
-	private JScrollPane scrollPane_contentAssignment2;
-	private JButton btn_nokSek;
-	private JButton btn_mostExpensiveValue;
-	private JButton btn_fotografernaLocation;
-	private JButton btn_sickEmployees;
-	private JButton btn_familyRelations;
-	private JButton btn_aBerglundsEmployees;
-	private JButton btn_customerAccount;
-	private JButton btn_assignment3;
-	private JButton btn_assignment2;
 	private DefaultTableModel tableModel_contentAssignment2;
 	private JLabel lbl_assignment1Response;
 
@@ -95,59 +83,11 @@ public class Frame extends JFrame {
 		btn_getLargestTable.setBounds(662, 505, 132, 23);
 		panel_contentAssignment1.add(btn_getLargestTable);
 
-		btn_assignment3 = new JButton("Go to assignment 3");
-		btn_assignment3.setBounds(10, 11, 164, 23);
-		panel_contentAssignment1.add(btn_assignment3);
-		
 		lbl_assignment1Response = new JLabel("");
 		lbl_assignment1Response.setBounds(10, 449, 800, 14);
 		panel_contentAssignment1.add(lbl_assignment1Response);
 
-		panel_contentAssignment2 = new JPanel();
-		getContentPane().add(panel_contentAssignment2, "name_968404147739400");
-		panel_contentAssignment2.setLayout(null);
-
-		scrollPane_contentAssignment2 = new JScrollPane();
-		scrollPane_contentAssignment2.setBounds(10, 50, 800, 400);
-		panel_contentAssignment2.add(scrollPane_contentAssignment2);
-
-		table_contentAssignment2 = new JTable(tableModel_contentAssignment2);
-		scrollPane_contentAssignment2.setViewportView(table_contentAssignment2);
-
-		btn_nokSek = new JButton("NOK -> SEK");
-		btn_nokSek.setBounds(10, 471, 132, 23);
-		panel_contentAssignment2.add(btn_nokSek);
-
-		btn_mostExpensiveValue = new JButton("Most expensive value");
-		btn_mostExpensiveValue.setBounds(166, 471, 189, 23);
-		panel_contentAssignment2.add(btn_mostExpensiveValue);
-
-		btn_fotografernaLocation = new JButton("Fotograferna location");
-		btn_fotografernaLocation.setBounds(378, 471, 177, 23);
-		panel_contentAssignment2.add(btn_fotografernaLocation);
-
-		btn_sickEmployees = new JButton("Sick employees");
-		btn_sickEmployees.setBounds(10, 505, 132, 23);
-		panel_contentAssignment2.add(btn_sickEmployees);
-
-		btn_familyRelations = new JButton("Family relations");
-		btn_familyRelations.setBounds(582, 471, 132, 23);
-		panel_contentAssignment2.add(btn_familyRelations);
-
-		btn_aBerglundsEmployees = new JButton("A Berglunds employees");
-		btn_aBerglundsEmployees.setBounds(378, 505, 177, 23);
-		panel_contentAssignment2.add(btn_aBerglundsEmployees);
-
-		btn_customerAccount = new JButton("Customer 10000 account");
-		btn_customerAccount.setBounds(166, 505, 189, 23);
-		panel_contentAssignment2.add(btn_customerAccount);
-
-		btn_assignment2 = new JButton("Go to assignment 2");
-		btn_assignment2.setBounds(10, 11, 164, 23);
-		panel_contentAssignment2.add(btn_assignment2);
-
 		tableModel_content = (DefaultTableModel) table_content.getModel();
-		tableModel_contentAssignment2 = (DefaultTableModel) table_contentAssignment2.getModel();
 
 	}
 
@@ -271,102 +211,6 @@ public class Frame extends JFrame {
 		this.panel_contentAssignment1 = panel_contentAssignment1;
 	}
 
-	public JPanel getPanel_contentAssignment2() {
-		return panel_contentAssignment2;
-	}
-
-	public void setPanel_contentAssignment2(JPanel panel_contentAssignment2) {
-		this.panel_contentAssignment2 = panel_contentAssignment2;
-	}
-
-	public JTable getTable_contentAssignment2() {
-		return table_contentAssignment2;
-	}
-
-	public void setTable_contentAssignment2(JTable table_contentAssignment2) {
-		this.table_contentAssignment2 = table_contentAssignment2;
-	}
-
-	public JScrollPane getScrollPane_contentAssignment2() {
-		return scrollPane_contentAssignment2;
-	}
-
-	public void setScrollPane_contentAssignment2(JScrollPane scrollPane_contentAssignment2) {
-		this.scrollPane_contentAssignment2 = scrollPane_contentAssignment2;
-	}
-
-	public JButton getBtn_nokSek() {
-		return btn_nokSek;
-	}
-
-	public void setBtn_nokSek(JButton btn_nokSek) {
-		this.btn_nokSek = btn_nokSek;
-	}
-
-	public JButton getBtn_mostExpensiveValue() {
-		return btn_mostExpensiveValue;
-	}
-
-	public void setBtn_mostExpensiveValue(JButton btn_mostExpensiveValue) {
-		this.btn_mostExpensiveValue = btn_mostExpensiveValue;
-	}
-
-	public JButton getBtn_fotografernaLocation() {
-		return btn_fotografernaLocation;
-	}
-
-	public void setBtn_fotografernaLocation(JButton btn_fotografernaLocation) {
-		this.btn_fotografernaLocation = btn_fotografernaLocation;
-	}
-
-	public JButton getBtn_sickEmployees() {
-		return btn_sickEmployees;
-	}
-
-	public void setBtn_sickEmployees(JButton btn_sickEmployees) {
-		this.btn_sickEmployees = btn_sickEmployees;
-	}
-
-	public JButton getBtn_familyRelations() {
-		return btn_familyRelations;
-	}
-
-	public void setBtn_familyRelations(JButton btn_familyRelations) {
-		this.btn_familyRelations = btn_familyRelations;
-	}
-
-	public JButton getBtn_aBerglundsEmployees() {
-		return btn_aBerglundsEmployees;
-	}
-
-	public void setBtn_aBerglundsEmployees(JButton btn_aBerglundsEmployees) {
-		this.btn_aBerglundsEmployees = btn_aBerglundsEmployees;
-	}
-
-	public JButton getBtn_customerAccount() {
-		return btn_customerAccount;
-	}
-
-	public void setBtn_customerAccount(JButton btn_customerAccount) {
-		this.btn_customerAccount = btn_customerAccount;
-	}
-
-	public JButton getBtn_assignment3() {
-		return btn_assignment3;
-	}
-
-	public void setBtn_assignment3(JButton btn_assignment3) {
-		this.btn_assignment3 = btn_assignment3;
-	}
-
-	public JButton getBtn_assignment2() {
-		return btn_assignment2;
-	}
-
-	public void setBtn_assignment2(JButton btn_assignment2) {
-		this.btn_assignment2 = btn_assignment2;
-	}
-
 	public DefaultTableModel getTableModel_contentAssignment2() {
 		return tableModel_contentAssignment2;
 	}
@@ -382,7 +226,5 @@ public class Frame extends JFrame {
 	public void setLbl_assignment1Response(JLabel lbl_assignment1Response) {
 		this.lbl_assignment1Response = lbl_assignment1Response;
 	}
-	
-	
 
 }
